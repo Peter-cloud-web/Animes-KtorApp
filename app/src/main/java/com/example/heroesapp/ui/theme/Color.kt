@@ -1,6 +1,8 @@
 package com.example.heroesapp.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Colors
+import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
@@ -15,9 +17,18 @@ val Pink40 = Color(0xFF7D5260)
 val LightGray = Color(0xFFD8D8D8)
 val DarkGray = Color(0xFF2A2A2A)
 
-val Colors.welcomeScreenBackgroundColor
+val ColorScheme.welcomeScreenBackgroundColor
     @Composable
-    get() = if (isLight) Color.White else Color.Black
+    get() = if (!isSystemInDarkTheme()) Color.White else Color.Black
+
+val ColorScheme.titleColor
+    @Composable
+    get() = if (!isSystemInDarkTheme()) DarkGray else LightGray
+
+val ColorScheme.descriptionColor
+    @Composable
+    get() = if (!isSystemInDarkTheme()) DarkGray.copy(alpha = 0.5f)
+    else LightGray.copy(alpha = 0.5f)
 
 
 
